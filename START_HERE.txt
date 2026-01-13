@@ -1,0 +1,129 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║      STATIC SALESMAN PORTAL - START HERE                          ║
+║      Ageint Security Solutions                                    ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🎯 CHOOSE YOUR INSTALLATION METHOD
+═══════════════════════════════════════════════════════════════════
+
+┌───────────────────────────────────────────────────────────────┐
+│ METHOD 1: Standard Installation (Recommended)                 │
+│ Requires: Python installed on your computer                   │
+└───────────────────────────────────────────────────────────────┘
+
+  ✅ Best for: Regular use on your own computer
+  
+  STEPS:
+  1. Install Python from: https://www.python.org/downloads/
+     ⚠️ CHECK "Add Python to PATH" during installation!
+  
+  2. Double-click: setup_complete.bat
+     (This installs everything automatically)
+  
+  3. Double-click: run.bat
+     (Generate salesman profiles)
+
+
+┌───────────────────────────────────────────────────────────────┐
+│ METHOD 2: Portable Installation                               │
+│ Requires: Nothing! Works on any Windows PC                    │
+└───────────────────────────────────────────────────────────────┘
+
+  ✅ Best for: USB stick, sharing with others, no admin rights
+  
+  STEPS:
+  1. Download WinPython (portable Python):
+     https://winpython.github.io/
+     
+  2. Extract WinPython to this folder
+     
+  3. See: PORTABLE_SETUP.md for detailed instructions
+  
+  4. Double-click: run_portable.bat
+
+
+┌───────────────────────────────────────────────────────────────┐
+│ METHOD 3: Already Have Python?                                │
+│ Quick start for Python users                                  │
+└───────────────────────────────────────────────────────────────┘
+
+  Open Command Prompt here and run:
+  
+    pip install -r requirements.txt
+    python generate_salesman.py
+
+
+═══════════════════════════════════════════════════════════════════
+📚 HELPFUL FILES
+═══════════════════════════════════════════════════════════════════
+
+  🌟 SIMPLE_GUIDE.txt           → For non-technical users (READ THIS!)
+  🌟 VISUAL_GUIDE.txt           → Which file to click? (With pictures!)
+  🌐 GITHUB_SETUP_GUIDE.txt     → Complete GitHub setup (zero to live!)
+  📱 PHONE_USAGE_GUIDE.txt      → For staff: how to collect reviews
+  QUICK_START.txt               → Simple step-by-step guide
+  PORTABLE_SETUP.md             → How to make it fully portable
+  README.md                     → Complete documentation
+  
+  setup_complete.bat     → Automatic setup (Method 1)
+  install.bat            → Install dependencies only
+  run.bat                → Generate salesman profiles
+  deploy.bat             → Deploy to GitHub Pages
+  
+  run_portable.bat       → Run with portable Python
+  run_embedded.bat       → Run with embedded Python
+
+
+═══════════════════════════════════════════════════════════════════
+❓ WHICH METHOD SHOULD I USE?
+═══════════════════════════════════════════════════════════════════
+
+  "I have admin rights and use this PC regularly"
+  → Use METHOD 1 (Standard Installation)
+  
+  "I need to run this on multiple PCs or from USB"
+  → Use METHOD 2 (Portable Installation)
+  
+  "I'm a developer and already have Python"
+  → Use METHOD 3 (Quick Start)
+  
+  "I just want it to work NOW!"
+  → Use METHOD 1, double-click: setup_complete.bat
+  
+  "I'm not tech-savvy and need simple instructions"
+  → Read SIMPLE_GUIDE.txt first!
+
+
+═══════════════════════════════════════════════════════════════════
+🚀 AFTER SETUP
+═══════════════════════════════════════════════════════════════════
+
+  1. Generate profiles: run.bat
+  2. Deploy to web: deploy.bat
+  3. View locally: Open index.html in browser
+
+
+═══════════════════════════════════════════════════════════════════
+💡 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════
+
+  Problem: "Python is not recognized"
+  → Reinstall Python with "Add to PATH" checked
+  → Or use portable Python (Method 2)
+  
+  Problem: "Access denied" or permission errors
+  → Run as Administrator, or use portable Python
+  
+  Problem: Scripts won't run
+  → Right-click → Properties → Unblock
+  → Or run: powershell -ExecutionPolicy Bypass
+
+
+═══════════════════════════════════════════════════════════════════
+
+Need more help? Check README.md or QUICK_START.txt
+
+═══════════════════════════════════════════════════════════════════

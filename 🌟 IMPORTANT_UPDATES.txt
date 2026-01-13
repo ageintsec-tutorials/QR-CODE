@@ -1,0 +1,247 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║                ⭐ IMPORTANT UPDATES - READ THIS! ⭐                ║
+║                  Ageint Security Staff Portal v2.0                ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🎉 YOUR PORTAL IS NOW SET UP FOR GOOGLE REVIEWS!
+═══════════════════════════════════════════════════════════════════
+
+Every QR code now points to your Google Reviews page:
+https://search.google.com/local/writereview?placeid=ChIJ65CsoCI0R4YRAssAAswitSw
+
+This means customers can easily leave reviews for Ageint Security!
+
+
+✅ WHAT'S CHANGED (Version 2.0)
+═══════════════════════════════════════════════════════════════════
+
+1. ⭐ QR CODES → GOOGLE REVIEWS
+   All QR codes now take customers directly to leave a review
+
+2. 👥 SUPPORT FOR SALESMEN & TECHNICIANS
+   Choose role when creating profiles (Salesman, Technician, Custom)
+
+3. 📁 NEW FOLDER STRUCTURE
+   /salesmen/ → /staff/ (more inclusive for all team members)
+
+4. 🎨 UPDATED DESIGN
+   Profile pages emphasize "Leave a Review" messaging
+
+
+🚀 HOW TO USE (QUICK START)
+═══════════════════════════════════════════════════════════════════
+
+FOR NON-TECHNICAL USERS:
+───────────────────────────────────────────────────────────────────
+👉 Read: SIMPLE_GUIDE.txt (everything in plain English!)
+
+FOR EVERYONE ELSE:
+───────────────────────────────────────────────────────────────────
+1. Install Python (with "Add to PATH" checked)
+2. Double-click: setup_complete.bat
+3. Double-click: run.bat
+4. Enter staff name
+5. Choose role (1=Salesman, 2=Technician)
+6. Done! QR code created for Google Reviews
+
+
+📱 WHAT YOUR STAFF SHOULD DO
+═══════════════════════════════════════════════════════════════════
+
+1. BOOKMARK THEIR PERSONAL PAGE ON THEIR PHONE
+   ──────────────────────────────────────────────────────────────
+   - Admin sends them their personal link
+   - Example: .../staff/john-smith.html
+   - They bookmark it or add to home screen
+   - See: 📱 PHONE_USAGE_GUIDE.txt for step-by-step
+
+
+2. OPEN THE PAGE AND SHOW CUSTOMERS
+   ──────────────────────────────────────────────────────────────
+   After completing a sale or service:
+   
+   1. Staff opens their page on THEIR phone
+   2. Shows the screen to customer
+   3. Page displays their name + big QR code
+   4. Customer scans with THEIR phone camera
+
+
+3. CUSTOMER SCANS → INSTANT REVIEW
+   ──────────────────────────────────────────────────────────────
+   Customer's phone opens Google Reviews page
+   → They tap 5 stars ⭐⭐⭐⭐⭐
+   → Write optional comment
+   → Submit review
+   → Ageint Security gets more Google visibility!
+
+
+ALTERNATIVE: Business Cards
+   ──────────────────────────────────────────────────────────────
+   - QR codes are also in /qrcodes/ folder
+   - Print on business cards for customers to take home
+
+
+💼 PRINT QR CODES ON:
+═══════════════════════════════════════════════════════════════════
+
+✓ Business cards (back or front)
+✓ Vehicle decals/magnets
+✓ Service invoices
+✓ Promotional flyers
+✓ Email signatures
+✓ Thank you cards
+✓ Stickers for tool boxes
+✓ Name badges
+
+
+📊 WHY THIS IS POWERFUL
+═══════════════════════════════════════════════════════════════════
+
+Before:
+  - Hard to get customers to leave reviews
+  - Had to explain where to go
+  - Customers forgot
+
+After:
+  ⭐ One scan → instant review form
+  ⭐ Every staff member collects reviews
+  ⭐ Professional, easy experience
+  ⭐ More reviews = better Google ranking
+  ⭐ Better ranking = more customers
+
+
+🎯 ROLES SUPPORTED
+═══════════════════════════════════════════════════════════════════
+
+When creating a profile, you can choose:
+
+1. SALESMAN
+   Perfect for sales team members
+
+2. TECHNICIAN
+   Perfect for installation/service technicians
+
+3. CUSTOM ROLE
+   Type anything: Manager, Consultant, Installer, etc.
+
+Each role displays on their profile page!
+
+
+📁 FOLDER STRUCTURE (WHAT'S WHERE)
+═══════════════════════════════════════════════════════════════════
+
+/staff/
+  └─ HTML profile pages for each person
+     (john-smith.html, jane-doe.html, etc.)
+
+/qrcodes/
+  └─ QR code images for each person
+     (john-smith.png, jane-doe.png, etc.)
+     ⭐ THESE ARE WHAT YOU PRINT!
+
+index.html
+  └─ Admin dashboard showing all staff
+     (Double-click to view in browser)
+
+
+🔄 TYPICAL WORKFLOW
+═══════════════════════════════════════════════════════════════════
+
+  NEW HIRE JOINS COMPANY
+         ↓
+  Run: run.bat
+         ↓
+  Enter: "John Smith"
+         ↓
+  Choose: 2 (Technician)
+         ↓
+  QR CODE CREATED
+         ↓
+  Print QR code from /qrcodes/john-smith.png
+         ↓
+  Put on business card
+         ↓
+  John gives card to customers
+         ↓
+  CUSTOMERS LEAVE REVIEWS!
+
+
+⚙️ CONFIGURATION
+═══════════════════════════════════════════════════════════════════
+
+Your Google Review URL is set to:
+https://search.google.com/local/writereview?placeid=ChIJ65CsoCI0R4YRAssAAswitSw
+
+To change it (if needed):
+1. Open: generate_salesman.py
+2. Find: GOOGLE_REVIEW_URL = "..."
+3. Replace with your Google Place ID URL
+4. Save
+5. Regenerate all QR codes
+
+
+💡 PRO TIPS FOR MAXIMUM REVIEWS
+═══════════════════════════════════════════════════════════════════
+
+✓ Ask immediately after service (while customer is happy!)
+✓ Make it easy: "Just scan this QR code"
+✓ Thank customers who leave reviews
+✓ Share positive reviews on social media
+✓ Put QR codes everywhere customers see them
+✓ Train staff: "Don't forget to ask for reviews!"
+✓ Incentivize staff who get the most reviews
+
+
+📚 WHERE TO GET HELP
+═══════════════════════════════════════════════════════════════════
+
+Not tech-savvy?
+  → Read: SIMPLE_GUIDE.txt
+
+Want to see which files to click?
+  → Read: VISUAL_GUIDE.txt
+
+Need detailed instructions?
+  → Read: QUICK_START.txt or README.md
+
+Want to know what changed?
+  → Read: CHANGELOG_v2.txt
+
+
+🎓 TRAINING YOUR TEAM
+═══════════════════════════════════════════════════════════════════
+
+Share this message with your salesmen and technicians:
+
+  "We've created special QR codes for each of you at Ageint Security.
+   When you complete a job or sale, ask the customer to scan your QR
+   code to leave a review. It takes 30 seconds and helps our business
+   grow. Your QR code is on your business card!"
+
+
+═══════════════════════════════════════════════════════════════════
+
+🌟 THIS IS A GAME-CHANGER FOR YOUR BUSINESS!
+
+Every staff member is now a review collection point.
+More reviews = Better Google ranking = More customers!
+
+═══════════════════════════════════════════════════════════════════
+
+
+QUICK REFERENCE CARD (Print This!)
+───────────────────────────────────────────────────────────────────
+
+Add new staff:        → Double-click run.bat
+View all staff:       → Double-click index.html
+Find QR codes:        → Open /qrcodes/ folder
+Test installation:    → Double-click test_installation.bat
+Deploy to web:        → Double-click deploy.bat
+
+Google Review URL:
+https://search.google.com/local/writereview?placeid=ChIJ65CsoCI0R4YRAssAAswitSw
+
+═══════════════════════════════════════════════════════════════════
