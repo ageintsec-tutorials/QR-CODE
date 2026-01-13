@@ -106,20 +106,35 @@ def get_all_staff():
 
 def generate_admin_dashboard():
     """Generate the admin dashboard (index.html) with all staff members."""
+    import hashlib
+    
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('admin_list_template.html')
     
     staff_members = get_all_staff()
+    
+    # Generate password hash for "Ageint2016$"
+    PASSWORD = "Ageint2016$"
+    SALT = "a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7"
+    salted_password = PASSWORD + SALT
+    password_hash = hashlib.sha256(salted_password.encode('utf-8')).hexdigest()
     
     html_content = template.render(
         staff_members=staff_members,
         google_review_url=GOOGLE_REVIEW_URL
     )
     
+    # Inject the actual hash into the HTML
+    html_content = html_content.replace(
+        'const STORED_HASH = "7e8f3c9d4b6a1e5f8c2d7a9e3b5f4c8d6a1e9f7b3c5d8e2a6f9c4b7e1d3a5f8c";',
+        f'const STORED_HASH = "{password_hash}";'
+    )
+    
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_content)
     
     print(f"✓ Admin dashboard updated: index.html ({len(staff_members)} staff members)")
+    print(f"✓ Password protection enabled (SHA-256 encryption)")
 
 def main():
     """Main function to run the staff member generator."""

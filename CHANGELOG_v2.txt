@@ -1,7 +1,7 @@
 ╔═══════════════════════════════════════════════════════════════════╗
 ║                                                                   ║
 ║                    📋 CHANGELOG - VERSION 2.0                     ║
-║                  AgeintSec Staff Portal with Google Reviews       ║
+║                  Ageint Security Staff Portal with Google Reviews ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 

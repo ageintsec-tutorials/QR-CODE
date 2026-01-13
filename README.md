@@ -1,4 +1,4 @@
-# AgeintSec Staff Portal
+# Ageint Security Staff Portal
 
 A static HTML-based portal system for security company staff (salesmen and technicians), deployed on GitHub Pages. Each staff member gets their own profile page with a QR code that links to your Google Reviews page.
 
@@ -300,7 +300,7 @@ python generate_salesman.py
 
 ## 📄 License
 
-This project is open source and available for use by AgeintSec Security Solutions.
+This project is open source and available for use by Ageint Security Solutions.
 
 ## 🤝 Support
 

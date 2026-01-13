@@ -86,8 +86,8 @@ What to Say:
 
 SCRIPT 1 (Casual):
   "I'm glad you're happy with the service! Would you mind taking
-   30 seconds to scan this QR code and leave us a quick review?
-   It really helps our business."
+   30 seconds to scan this QR code and leave Ageint Security a
+   quick review? It really helps our business."
 
 SCRIPT 2 (Friendly):
   "Thanks so much! If you have a moment, I'd really appreciate
@@ -189,7 +189,7 @@ For You:
   ✓ Shows you care about quality
   ✓ Good reviews might lead to bonuses/recognition
 
-For the Company:
+For Ageint Security:
   ✓ More reviews = higher Google ranking
   ✓ Higher ranking = more customers find us
   ✓ More customers = more business
@@ -231,8 +231,8 @@ Role-Play Scenario:
 ───────────────────────────────────────────────────────────────────
 Practice with a coworker:
 
-  YOU: "Thanks for choosing AgeintSec! Before I go, would you
-       mind scanning this QR code to leave us a quick review?"
+  YOU: "Thanks for choosing Ageint Security! Before I go, would
+       you mind scanning this QR code to leave us a quick review?"
   
   THEM: "What is it?"
   

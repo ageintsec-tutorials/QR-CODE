@@ -248,7 +248,7 @@ Step 4.2: Configure Repository Settings
      (This will be in your website URL!)
   
   2. Description (optional):
-     Type: AgeintSec Staff Portal with Google Reviews
+     Type: Ageint Security Staff Portal with Google Reviews
   
   3. Public or Private:
      ⚠️ **IMPORTANT**: Choose "Public"
@@ -320,7 +320,7 @@ Step 5.3: Add All Your Files
 
 Step 5.4: Create Your First Commit
 ───────────────────────────────────────────────────────────────────
-  Type: git commit -m "Initial commit: AgeintSec Staff Portal"
+  Type: git commit -m "Initial commit: Ageint Security Staff Portal"
   Press Enter
   
   You'll see a list of files that were committed.

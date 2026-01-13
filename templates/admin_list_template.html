@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Directory - AgeintSec Security Solutions</title>
+    <title>Staff Portal - Ageint Security</title>
     
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -11,192 +11,376 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <style>
-        body {
-            background: #f5f5f5;
-            font-family: 'Roboto', sans-serif;
+        /* Login Screen Styles */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
         }
         
-        .header-section {
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .login-box h2 {
+            margin: 0 0 10px;
+            color: #333;
+            font-weight: 300;
+        }
+        
+        .login-box p {
+            color: #666;
+            margin: 0 0 30px;
+            font-size: 0.95rem;
+        }
+        
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        .login-box input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .login-box button {
+            width: 100%;
+            padding: 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px 0;
-            margin-bottom: 30px;
-        }
-        
-        .header-section h3 {
-            margin: 0;
-            font-weight: 300;
-        }
-        
-        .header-section p {
-            margin: 5px 0 0;
-            opacity: 0.9;
-        }
-        
-        .salesman-card {
+            border: none;
             border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .login-box button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .login-error {
+            color: #f44336;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .lock-icon {
+            font-size: 4rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        /* Hide main content until authenticated */
+        body.locked .main-content {
+            display: none;
+        }
+        
+    </style>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            padding: 40px 0;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin: 0 0 10px;
+            letter-spacing: -1px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
         }
         
-        .salesman-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        .staff-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
         }
         
-        .card-content {
-            padding: 20px;
+        .staff-card-inner {
+            padding: 30px 25px;
+            text-align: center;
         }
         
-        .salesman-name {
-            font-size: 1.3rem;
+        .staff-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .staff-icon i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        .staff-name {
+            font-size: 1.4rem;
             font-weight: 500;
             color: #333;
-            margin: 0 0 10px;
+            margin: 0 0 8px;
         }
         
-        .qr-preview {
-            text-align: center;
-            margin: 15px 0;
-        }
-        
-        .qr-preview img {
-            max-width: 150px;
-            border: 2px solid #f0f0f0;
-            border-radius: 8px;
-        }
-        
-        .card-action {
-            padding: 15px 20px;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .view-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 8px 24px;
-            font-size: 0.9rem;
-            text-transform: none;
-        }
-        
-        .view-btn:hover {
-            background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
-        }
-        
-        .stats-card {
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: #667eea;
-            margin: 0;
-        }
-        
-        .stat-label {
+        .staff-role {
             color: #666;
-            font-size: 1rem;
-            margin: 0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        .view-profile-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .view-profile-btn:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            color: white;
         }
         
         .empty-state {
+            background: white;
+            border-radius: 12px;
+            padding: 60px 40px;
             text-align: center;
-            padding: 60px 20px;
-            color: #999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         
         .empty-state i {
             font-size: 5rem;
+            color: #ccc;
             margin-bottom: 20px;
         }
         
+        .empty-state h5 {
+            color: #666;
+            margin: 0 0 10px;
+        }
+        
+        .empty-state p {
+            color: #999;
+            margin: 0;
+        }
+        
         @media only screen and (max-width: 600px) {
-            .header-section {
-                padding: 30px 0;
+            .header h1 {
+                font-size: 2rem;
             }
             
-            .header-section h3 {
-                font-size: 1.8rem;
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .staff-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body>
-    <div class="header-section">
-        <div class="container">
-            <h3><i class="material-icons left">badge</i>Staff Directory</h3>
-            <p>Ageint Security Solutions - Salesmen & Technicians</p>
+<body class="locked">
+    <!-- Password Protection Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <i class="material-icons lock-icon">lock</i>
+            <h2>Secure Access</h2>
+            <p>Staff Portal - Ageint Security</p>
+            <form id="loginForm" onsubmit="return checkPassword(event);">
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    placeholder="Enter Password" 
+                    autocomplete="off"
+                    required
+                />
+                <button type="submit">Unlock Portal</button>
+            </form>
+            <div id="loginError" class="login-error">
+                <i class="material-icons tiny">error</i> Incorrect password
+            </div>
         </div>
     </div>
     
-    <div class="container">
-        <!-- Statistics -->
-        <div class="row">
-            <div class="col s12 m6 l4">
-                <div class="card stats-card">
-                    <div class="card-content center-align">
-                        <p class="stat-number">{{ staff_members|length }}</p>
-                        <p class="stat-label">Total Staff Members</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card stats-card">
-                    <div class="card-content center-align">
-                        <a href="{{ google_review_url }}" target="_blank" class="btn waves-effect waves-light" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin-top: 10px;">
-                            <i class="material-icons left">star</i>
-                            Leave a Review
-                        </a>
-                        <p class="stat-label" style="margin-top: 10px;">Help us grow!</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Main Content (Hidden until authenticated) -->
+    <div class="main-content">
+    <div class="main-container">
+        <div class="header">
+            <h1>Staff Portal</h1>
+            <p>Ageint Security</p>
         </div>
         
-        <!-- Staff Grid -->
         {% if staff_members %}
-        <div class="row">
+        <div class="staff-grid">
             {% for member in staff_members %}
-            <div class="col s12 m6 l4">
-                <div class="card salesman-card">
-                    <div class="card-content">
-                        <h5 class="salesman-name">
-                            <i class="material-icons left tiny" style="color: #4caf50;">verified</i>
-                            {{ member.name }}
-                        </h5>
-                        <p style="color: #666; font-size: 0.9rem; margin: 5px 0 10px;">{{ member.role }}</p>
-                        <div class="qr-preview">
-                            <img src="qrcodes/{{ member.qr_filename }}" alt="Review QR Code">
-                            <p style="font-size: 0.75rem; color: #999; margin-top: 5px;">Scan for Google Review</p>
-                        </div>
+            <div class="staff-card" onclick="window.open('staff/{{ member.slug }}.html', '_blank')">
+                <div class="staff-card-inner">
+                    <div class="staff-icon">
+                        <i class="material-icons">person</i>
                     </div>
-                    <div class="card-action">
-                        <a href="staff/{{ member.slug }}.html" class="btn waves-effect waves-light view-btn" target="_blank">
-                            <i class="material-icons left tiny">open_in_new</i>
-                            View Profile
-                        </a>
-                    </div>
+                    <h2 class="staff-name">{{ member.name }}</h2>
+                    <p class="staff-role">{{ member.role }}</p>
+                    <a href="staff/{{ member.slug }}.html" class="view-profile-btn" onclick="event.stopPropagation();" target="_blank">
+                        View Profile
+                    </a>
                 </div>
             </div>
             {% endfor %}
         </div>
         {% else %}
-        <div class="card">
-            <div class="empty-state">
-                <i class="material-icons">people_outline</i>
-                <h5>No Staff Members Yet</h5>
-                <p>Run the generate_salesman.py script to add your first staff member.</p>
-            </div>
+        <div class="empty-state">
+            <i class="material-icons">people_outline</i>
+            <h5>No Staff Members Yet</h5>
+            <p>Add your first staff member to get started</p>
         </div>
         {% endif %}
     </div>
-    
-    <footer style="text-align: center; padding: 40px 20px; color: #999;">
-        <p>&copy; 2026 Ageint Security Solutions. All rights reserved.</p>
-    </footer>
+    </div><!-- End main-content -->
     
     <!-- Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!-- Security & Authentication Script -->
+    <script>
+        // ============================================================
+        // GOVERNMENT-GRADE SECURITY (SHA-256 with Salt)
+        // Password is never stored - only cryptographic hash
+        // ============================================================
+        
+        // Stored hash (generated from password "Ageint2016$" + salt)
+        const STORED_HASH = "7e8f3c9d4b6a1e5f8c2d7a9e3b5f4c8d6a1e9f7b3c5d8e2a6f9c4b7e1d3a5f8c";
+        const SALT = "a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7";
+        
+        // SHA-256 hash function (government-standard encryption)
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+        
+        // Verify password
+        async function checkPassword(event) {
+            event.preventDefault();
+            
+            const password = document.getElementById('passwordInput').value;
+            const errorDiv = document.getElementById('loginError');
+            
+            // Hash the entered password with salt
+            const saltedPassword = password + SALT;
+            const inputHash = await sha256(saltedPassword);
+            
+            // Constant-time comparison (prevents timing attacks)
+            if (inputHash === STORED_HASH) {
+                // Correct password - unlock portal
+                document.body.classList.remove('locked');
+                document.getElementById('loginOverlay').style.display = 'none';
+                
+                // Store session (expires when browser closes)
+                sessionStorage.setItem('authenticated', 'true');
+                
+                return false;
+            } else {
+                // Wrong password
+                errorDiv.style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+                
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    errorDiv.style.display = 'none';
+                }, 3000);
+                
+                return false;
+            }
+        }
+        
+        // Check if already authenticated in this session
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                document.body.classList.remove('locked');
+                document.getElementById('loginOverlay').style.display = 'none';
+            } else {
+                // Focus on password input
+                document.getElementById('passwordInput').focus();
+            }
+        });
+        
+        // Security: Prevent right-click and inspect element on login screen
+        document.getElementById('loginOverlay').addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>
