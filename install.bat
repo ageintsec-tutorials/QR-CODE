@@ -11,29 +11,42 @@ echo    Ageint Security Solutions
 echo ============================================================
 echo.
 
-REM Check if Python is installed
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo [ERROR] Python is not installed or not in PATH!
-    echo.
-    echo Please install Python 3.7 or higher from:
-    echo https://www.python.org/downloads/
-    echo.
-    echo Make sure to check "Add Python to PATH" during installation.
-    echo.
-    pause
-    exit /b 1
+REM Check if Python is installed (try multiple commands)
+set PYTHON_CMD=
+
+py --version >nul 2>&1
+if not errorlevel 1 (
+    set PYTHON_CMD=py
+    goto :python_found
 )
 
+python --version >nul 2>&1
+if not errorlevel 1 (
+    set PYTHON_CMD=python
+    goto :python_found
+)
+
+python3 --version >nul 2>&1
+if not errorlevel 1 (
+    set PYTHON_CMD=python3
+    goto :python_found
+)
+
+echo [ERROR] Python is not installed or not accessible!
+echo.
+pause
+exit /b 1
+
+:python_found
 echo [OK] Python is installed.
-python --version
+%PYTHON_CMD% --version
 echo.
 
 REM Install required packages
 echo Installing required Python packages...
 echo.
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+%PYTHON_CMD% -m pip install --upgrade pip
+%PYTHON_CMD% -m pip install -r requirements.txt
 
 if errorlevel 1 (
     echo.

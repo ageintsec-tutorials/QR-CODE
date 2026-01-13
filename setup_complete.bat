@@ -13,7 +13,29 @@ echo.
 REM Step 1: Install dependencies
 echo [Step 1/3] Installing dependencies...
 echo.
-call install.bat
+
+REM Find Python
+set PYTHON_CMD=
+py --version >nul 2>&1
+if not errorlevel 1 set PYTHON_CMD=py
+if not defined PYTHON_CMD (
+    python --version >nul 2>&1
+    if not errorlevel 1 set PYTHON_CMD=python
+)
+if not defined PYTHON_CMD (
+    python3 --version >nul 2>&1
+    if not errorlevel 1 set PYTHON_CMD=python3
+)
+
+if not defined PYTHON_CMD (
+    echo [ERROR] Cannot find Python!
+    pause
+    exit /b 1
+)
+
+echo Found Python: %PYTHON_CMD%
+%PYTHON_CMD% -m pip install --upgrade pip >nul 2>&1
+%PYTHON_CMD% -m pip install -r requirements.txt
 
 if errorlevel 1 (
     echo.

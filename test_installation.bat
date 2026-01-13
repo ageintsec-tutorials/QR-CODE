@@ -12,45 +12,75 @@ echo.
 
 REM Test 1: Python availability
 echo [Test 1/5] Checking Python installation...
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo [FAIL] Python is not installed or not in PATH
-    echo.
-    set TEST_FAILED=1
-) else (
-    python --version
-    echo [PASS] Python is available
+set PYTHON_CMD=
+
+py --version >nul 2>&1
+if not errorlevel 1 (
+    set PYTHON_CMD=py
+    py --version
+    echo [PASS] Python is available (using py)
+    goto :test2
 )
+
+python --version >nul 2>&1
+if not errorlevel 1 (
+    set PYTHON_CMD=python
+    python --version
+    echo [PASS] Python is available (using python)
+    goto :test2
+)
+
+python3 --version >nul 2>&1
+if not errorlevel 1 (
+    set PYTHON_CMD=python3
+    python3 --version
+    echo [PASS] Python is available (using python3)
+    goto :test2
+)
+
+echo [FAIL] Python is not accessible
+set TEST_FAILED=1
+
+:test2
 echo.
 
 REM Test 2: Required modules
 echo [Test 2/5] Checking required Python modules...
-python -c "import qrcode" >nul 2>&1
+
+if not defined PYTHON_CMD (
+    echo [SKIP] Python not found, skipping module checks
+    set TEST_FAILED=1
+    goto :test3
+)
+
+%PYTHON_CMD% -c "import qrcode" >nul 2>&1
 if errorlevel 1 (
     echo [FAIL] qrcode module not installed
-    echo   Run: pip install qrcode[pil]
+    echo   Run: %PYTHON_CMD% -m pip install qrcode[pil]
     set TEST_FAILED=1
 ) else (
     echo [PASS] qrcode module installed
 )
 
-python -c "import jinja2" >nul 2>&1
+%PYTHON_CMD% -c "import jinja2" >nul 2>&1
 if errorlevel 1 (
     echo [FAIL] jinja2 module not installed
-    echo   Run: pip install jinja2
+    echo   Run: %PYTHON_CMD% -m pip install jinja2
     set TEST_FAILED=1
 ) else (
     echo [PASS] jinja2 module installed
 )
 
-python -c "import PIL" >nul 2>&1
+%PYTHON_CMD% -c "import PIL" >nul 2>&1
 if errorlevel 1 (
     echo [FAIL] PIL module not installed
-    echo   Run: pip install Pillow
+    echo   Run: %PYTHON_CMD% -m pip install Pillow
     set TEST_FAILED=1
 ) else (
     echo [PASS] PIL (Pillow) module installed
 )
+
+:test3
 echo.
 
 REM Test 3: File structure
@@ -101,13 +131,21 @@ echo.
 
 REM Test 5: Python script syntax
 echo [Test 5/5] Checking Python script syntax...
-python -m py_compile generate_salesman.py >nul 2>&1
+
+if not defined PYTHON_CMD (
+    echo [SKIP] Python not found, skipping syntax check
+    goto :final_result
+)
+
+%PYTHON_CMD% -m py_compile generate_salesman.py >nul 2>&1
 if errorlevel 1 (
     echo [FAIL] generate_salesman.py has syntax errors
     set TEST_FAILED=1
 ) else (
     echo [PASS] generate_salesman.py syntax is valid
 )
+
+:final_result
 echo.
 
 REM Final result
