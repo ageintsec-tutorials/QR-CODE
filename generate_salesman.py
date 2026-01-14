@@ -27,7 +27,7 @@ def ensure_directories():
     directories = ['staff', 'qrcodes', 'templates', 'static/css']
     for directory in directories:
         Path(directory).mkdir(parents=True, exist_ok=True)
-        print(f"✓ Directory ensured: {directory}/")
+        print(f"[OK] Directory ensured: {directory}/")
 
 def generate_qr_code(url, output_path):
     """Generate a QR code for the given URL."""
@@ -42,7 +42,7 @@ def generate_qr_code(url, output_path):
     
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(output_path)
-    print(f"✓ QR code generated: {output_path}")
+    print(f"[OK] QR code generated: {output_path}")
 
 def generate_staff_page(name, slug, role):
     """Generate a static HTML page for a staff member (salesman or technician)."""
@@ -70,9 +70,9 @@ def generate_staff_page(name, slug, role):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"✓ Profile page generated: {output_path}")
-    print(f"✓ Profile URL: {page_url}")
-    print(f"✓ QR code points to: {GOOGLE_REVIEW_URL}")
+    print(f"[OK] Profile page generated: {output_path}")
+    print(f"[OK] Profile URL: {page_url}")
+    print(f"[OK] QR code points to: {GOOGLE_REVIEW_URL}")
     
     return slug, qr_filename, role
 
@@ -121,20 +121,16 @@ def generate_admin_dashboard():
     
     html_content = template.render(
         staff_members=staff_members,
-        google_review_url=GOOGLE_REVIEW_URL
-    )
-    
-    # Inject the actual hash into the HTML
-    html_content = html_content.replace(
-        'const STORED_HASH = "7e8f3c9d4b6a1e5f8c2d7a9e3b5f4c8d6a1e9f7b3c5d8e2a6f9c4b7e1d3a5f8c";',
-        f'const STORED_HASH = "{password_hash}";'
+        google_review_url=GOOGLE_REVIEW_URL,
+        stored_hash=password_hash,
+        salt=SALT
     )
     
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"✓ Admin dashboard updated: index.html ({len(staff_members)} staff members)")
-    print(f"✓ Password protection enabled (SHA-256 encryption)")
+    print(f"[OK] Admin dashboard updated: index.html ({len(staff_members)} staff members)")
+    print(f"[OK] Password protection enabled (SHA-256 encryption)")
 
 def main():
     """Main function to run the staff member generator."""
@@ -151,7 +147,7 @@ def main():
     name = input("> ").strip()
     
     if not name or name.lower() == 'quit':
-        print("\n✗ No name provided. Exiting.")
+        print("\n[ERROR] No name provided. Exiting.")
         return
     
     # Get role from user
@@ -173,38 +169,38 @@ def main():
     
     # Generate slug
     slug = create_slug(name)
-    print(f"\n→ Slug created: {slug}")
-    print(f"→ Role: {role}")
+    print(f"\nSlug created: {slug}")
+    print(f"Role: {role}")
     
     # Check if staff member already exists
     if Path(f"staff/{slug}.html").exists():
         print(f"\n⚠ Warning: A profile for '{name}' already exists!")
         response = input("Do you want to regenerate it? (yes/no): ").strip().lower()
         if response not in ['yes', 'y']:
-            print("✗ Cancelled.")
+            print("[CANCELLED]")
             return
     
-    print("\n→ Generating profile...\n")
+    print("\nGenerating profile...\n")
     
     # Generate staff page and QR code
     generate_staff_page(name, slug, role)
     
     # Update admin dashboard
-    print("\n→ Updating admin dashboard...\n")
+    print("\nUpdating admin dashboard...\n")
     generate_admin_dashboard()
     
     print("\n" + "="*60)
-    print(f"   ✓ SUCCESS! {role} profile created.")
+    print(f"   SUCCESS! {role} profile created.")
     print("="*60)
     print(f"\n{name}'s Personal Review Page:")
-    print(f"  → {BASE_URL}/staff/{slug}.html")
+    print(f"  {BASE_URL}/staff/{slug}.html")
     print(f"\nWhat to do:")
     print(f"  1. Send the link above to {name}")
     print(f"  2. They should bookmark it on their phone")
     print(f"  3. They open it and show customers")
-    print(f"  4. Customers scan the QR code → leave reviews!")
+    print(f"  4. Customers scan the QR code and leave reviews!")
     print(f"\nQR Code Location:")
-    print(f"  → qrcodes/{slug}.png (for printing on business cards)")
+    print(f"  qrcodes/{slug}.png (for printing on business cards)")
     print(f"\nTo deploy to GitHub:")
     print(f'  git add .')
     print(f'  git commit -m "Add {role} profile for {name}"')

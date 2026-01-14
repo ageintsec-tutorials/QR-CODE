@@ -400,9 +400,9 @@
         // Password is never stored - only cryptographic hash
         // ============================================================
         
-        // Stored hash - change password by regenerating this hash in generate_salesman.py
-        const STORED_HASH = "7e8f3c9d4b6a1e5f8c2d7a9e3b5f4c8d6a1e9f7b3c5d8e2a6f9c4b7e1d3a5f8c";
-        const SALT = "a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7";
+        // Stored hash - managed by password_config.txt
+        const STORED_HASH = "{{ stored_hash }}";
+        const SALT = "{{ salt }}";
         
         // SHA-256 hash function (government-standard encryption)
         async function sha256(message) {
