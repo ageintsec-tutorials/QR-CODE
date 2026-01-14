@@ -16,6 +16,15 @@ python-embed/
 python-portable/
 get-pip.py
 
+# Local admin hub (never deploy)
+hub_app.py
+.hub_state.json
+generate_password_hash.py
+password_config.txt
+calculate_hash.py
+staff.json
+tech.json
+
 # PyInstaller
 build/
 dist/

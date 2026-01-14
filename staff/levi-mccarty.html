@@ -12,97 +12,141 @@
     
     <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Roboto', sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
         }
         
         .profile-card {
             max-width: 500px;
-            margin: 20px;
+            width: 100%;
+            margin: 0 auto;
             border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
         }
         
         .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
+            background: #f8f9fa;
+            color: #212529;
+            padding: 30px 20px;
             text-align: center;
-            border-radius: 16px 16px 0 0;
+            border-bottom: 1px solid #e0e0e0;
         }
         
         .card-header h4 {
+            margin: 0 0 12px;
+            font-weight: 600;
+            font-size: 1.75rem;
+            color: #212529;
+        }
+
+        .subtitle {
+            color: #6c757d;
+            font-size: 0.95rem;
+            font-weight: 500;
             margin: 0;
-            font-weight: 300;
-            font-size: 2rem;
         }
         
         .verified-badge {
-            display: inline-block;
-            background: #4caf50;
-            color: white;
-            padding: 8px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 8px 16px;
             border-radius: 20px;
-            margin-top: 10px;
+            margin-top: 8px;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
+            border: 1px solid #c8e6c9;
         }
         
         .verified-badge i {
-            vertical-align: middle;
-            margin-right: 5px;
+            color: #2e7d32;
+            font-size: 18px;
         }
         
         .qr-container {
             text-align: center;
-            padding: 40px 20px 20px;
-            background: white;
+            padding: 30px 20px;
+            background: #ffffff;
+        }
+
+        .qr-frame {
+            display: inline-block;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 14px;
+            background: #ffffff;
         }
         
         .qr-container img {
-            max-width: 320px;
+            max-width: 300px;
             width: 100%;
             height: auto;
-            border: 5px solid #f5f5f5;
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
         .qr-label {
-            color: #333;
+            color: #212529;
             font-size: 1.1rem;
             font-weight: 600;
             margin-top: 20px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         
         .qr-sublabel {
-            color: #666;
+            color: #6c757d;
             font-size: 0.95rem;
-            margin-top: 5px;
-            margin-bottom: 0;
+            margin: 0;
+        }
+
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid #e0e0e0;
+            background: #ffffff;
+            color: #495057;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
         }
         
         .scan-instruction {
-            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-            color: white;
+            background: #f8f9fa;
+            color: #212529;
             padding: 15px 20px;
-            border-radius: 8px;
-            margin: 20px 20px 0;
+            margin: 20px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 500;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+            border: 1px solid #e0e0e0;
         }
         
         .scan-instruction i {
@@ -114,58 +158,78 @@
         .card-action {
             padding: 20px;
             text-align: center;
-            background: white;
-            border-radius: 0 0 16px 16px;
+            background: #ffffff;
+            border-top: 1px solid #e0e0e0;
         }
         
         .contact-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #212529;
             border: none;
-            border-radius: 25px;
-            padding: 12px 40px;
+            border-radius: 24px;
+            padding: 14px 32px;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: none;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+            width: 100%;
+            max-width: 300px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            gap: 8px;
         }
         
         .contact-btn:hover {
-            background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+            background: #000000;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            color: #ffffff;
         }
         
         .contact-btn i {
-            margin-right: 8px;
+            margin-right: 0;
         }
         
         .footer-text {
             text-align: center;
-            color: white;
-            margin-top: 20px;
+            color: #6c757d;
+            margin: 20px 0;
             font-size: 0.9rem;
-            opacity: 0.9;
         }
         
         @media only screen and (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
             .card-header h4 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+            }
+            
+            .card-header {
+                padding: 24px 16px;
+            }
+            
+            .qr-container {
+                padding: 24px 16px;
             }
             
             .qr-container img {
-                max-width: 280px;
+                max-width: 260px;
             }
             
             .scan-instruction {
+                margin: 16px;
+                padding: 12px 16px;
                 font-size: 0.95rem;
-                padding: 12px 15px;
             }
-        }
-        
-        @media only screen and (min-width: 601px) {
-            .qr-container img {
-                max-width: 350px;
+            
+            .contact-btn {
+                width: 100%;
+                max-width: 100%;
             }
         }
     </style>
@@ -179,6 +243,7 @@
                     <i class="material-icons tiny">verified</i>
                     Technician
                 </div>
+                <p class="subtitle">Ageint Security Solutions</p>
             </div>
             
             <div class="scan-instruction">
@@ -187,16 +252,23 @@
             </div>
             
             <div class="qr-container">
-                <img src="../qrcodes/levi-mccarty.png" alt="Review QR Code for Levi McCarty">
+                <div class="qr-frame">
+                    <img src="../qrcodes/levi-mccarty.png" alt="Review QR Code for Levi McCarty">
+                </div>
                 <p class="qr-label">Scan to Leave a Google Review!</p>
                 <p class="qr-sublabel">
                     Your feedback helps us improve our service
                 </p>
+                <div class="trust-row">
+                    <span class="trust-pill"><i class="material-icons tiny">verified_user</i> Verified Staff</span>
+                    <span class="trust-pill"><i class="material-icons tiny">lock</i> Secure Process</span>
+                    <span class="trust-pill"><i class="material-icons tiny">support</i> 24/7 Support</span>
+                </div>
             </div>
             
             <div class="card-action">
                 <a href="https://search.google.com/local/writereview?placeid=ChIJ65CsoCI0R4YRAssAAswitSw" target="_blank" class="btn waves-effect waves-light contact-btn">
-                    <i class="material-icons left">star</i>
+                    <i class="material-icons">star</i>
                     Leave a Review
                 </a>
             </div>
