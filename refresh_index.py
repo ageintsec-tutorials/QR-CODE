@@ -19,11 +19,11 @@ if __name__ == "__main__":
     print("\nindex.html has been regenerated with password protection.")
     print("\nNext steps:")
     print("  1. Push to GitHub:")
-    print('     git add . && git commit -m "Add secure index" && git push')
+    print('     git add . && git commit -m "Update dashboard" && git push')
     print("  2. Wait 1-2 minutes")
     print("  3. Visit: https://ageintsec-tutorials.github.io/QR-CODE/")
     print("  4. You'll see the login screen!")
-    print("\nPassword: Ageint2016$")
+    print("\nUse the password you set in generate_salesman.py (line 118)")
     print("\n")
     
     input("Press Enter to continue...")

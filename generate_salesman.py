@@ -113,8 +113,8 @@ def generate_admin_dashboard():
     
     staff_members = get_all_staff()
     
-    # Generate password hash for "Ageint2016$"
-    PASSWORD = "Ageint2016$"
+    # Generate password hash (change PASSWORD below to set your own)
+    PASSWORD = "Ageint2016$"  # ⚠️ CHANGE THIS to your own password
     SALT = "a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7e9b3c5d8a6f9c4b7e1d3a5f8c2d7"
     salted_password = PASSWORD + SALT
     password_hash = hashlib.sha256(salted_password.encode('utf-8')).hexdigest()

@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================
-REM   Static Salesman Portal - Git Deploy Helper
+REM   Staff Portal - Git Deploy Helper
 REM   Ageint Security Solutions
 REM ============================================================
 
@@ -21,12 +21,41 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo Current changes:
+REM Show current directory
+echo Current directory: %CD%
 echo.
-git status -s
+
+REM Show detailed status
+echo Git Status (Modified/Untracked files):
+echo ----------------------------------------
+git status
 
 echo.
-echo Enter commit message (or press Ctrl+C to cancel):
+echo Files that will be deployed:
+echo ----------------------------------------
+echo Templates:
+dir /b templates\*.html 2>nul || echo   (none)
+echo Staff Pages:
+dir /b staff\*.html 2>nul || echo   (none)
+echo QR Codes:
+dir /b qrcodes\*.png 2>nul || echo   (none)
+echo Documentation:
+dir /b *.md 2>nul || echo   (none)
+
+echo.
+echo ============================================================
+echo.
+set /p continue="Do you want to continue with deployment? (y/n): "
+
+if /i not "%continue%"=="y" (
+    echo.
+    echo Deployment cancelled.
+    pause
+    exit /b 0
+)
+
+echo.
+echo Enter commit message:
 set /p commit_msg="> "
 
 if "%commit_msg%"=="" (
@@ -37,19 +66,32 @@ if "%commit_msg%"=="" (
 )
 
 echo.
-echo Adding files to Git...
-git add .
+echo Adding ALL files to Git (including untracked)...
+git add -A
 
+echo.
+echo Files staged for commit:
+git status -s
+
+echo.
 echo Committing changes...
 git commit -m "%commit_msg%"
 
 if errorlevel 1 (
     echo.
     echo [WARNING] Commit failed. Nothing to commit or error occurred.
+    echo.
+    echo This usually means:
+    echo   1. No changes were detected
+    echo   2. Files might be in .gitignore
+    echo   3. You're in the wrong directory
+    echo.
+    echo Try running check_git.bat for more details.
     pause
     exit /b 1
 )
 
+echo.
 echo Pushing to GitHub...
 git push origin main
 
