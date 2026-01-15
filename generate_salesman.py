@@ -152,13 +152,13 @@ def main():
     
     # Get role from user
     print("\nSelect role:")
-    print("  1. Salesman")
+    print("  1. Sales Representative")
     print("  2. Technician")
     print("  3. Other (you'll type it)")
     role_choice = input("> ").strip()
     
     if role_choice == '1':
-        role = "Salesman"
+        role = "Sales Representative"
     elif role_choice == '2':
         role = "Technician"
     elif role_choice == '3':

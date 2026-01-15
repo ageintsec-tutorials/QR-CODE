@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ageint Security - Leave a Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 40px 20px 30px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 0.875rem;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .divider {
+            display: none;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        .review-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .review-intro h2 {
+            font-size: 1.125rem;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .review-intro p {
+            font-size: 0.875rem;
+            color: #666666;
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        .review-button {
+            display: inline-block;
+            padding: 12px 32px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #ffffff;
+            background: #2a2a2a;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .review-button:hover {
+            background: #1a1a1a;
+        }
+
+        .review-button:active {
+            transform: scale(0.98);
+        }
+
+        .features {
+            display: none;
+        }
+
+        .stars {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            letter-spacing: 3px;
+            color: #d4d4d4;
+        }
+
+        .footer {
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer p {
+            color: #999999;
+            font-size: 0.75rem;
+        }
+
+        .corner-accent {
+            display: none;
+        }
+
+        .security-icon {
+            display: none;
+        }
+
+        .card-title {
+            color: #1a1a1a;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: #666666;
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.375rem;
+            }
+
+            .tagline {
+                font-size: 0.8125rem;
+            }
+
+            .review-intro h2 {
+                font-size: 1rem;
+            }
+
+            .review-intro p {
+                font-size: 0.8125rem;
+            }
+
+            .review-button {
+                padding: 10px 28px;
+                font-size: 0.8125rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-card {
+                padding: 24px 16px;
+            }
+
+            .stars {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="corner-accent top-left"></div>
+        <div class="corner-accent bottom-right"></div>
+        
+        <header class="header">
+            <div class="logo">
+                <div class="security-icon"></div>
+                <h1>Ageint Security</h1>
+                <div class="divider"></div>
+                <p class="tagline">Your Trust, Our Priority</p>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="review-intro">
+                <h2>Share Your Experience</h2>
+                <p>Your feedback helps us serve you better and helps others make informed decisions. We value your opinion and appreciate you taking the time to leave a review.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <h2 style="color: #e0e0e0; font-size: 2.2rem; margin-bottom: 20px; font-weight: 700;">Rate Your Experience</h2>
+                <p style="color: #999; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.7;">
+                    Click the button below to share your feedback on Google.<br>
+                    Your review means the world to us.
+                </p>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJ65CsoCI0R4YRAssAAswitSw" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="review-button">
+                    <span>Leave a Google Review</span>
+                </a>
+            </div>
+
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick & Easy</h3>
+                    <p>Takes less than a minute to share your experience</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your information is protected by Google's security</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💬</div>
+                    <h3>Make an Impact</h3>
+                    <p>Help others discover quality security services</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Ageint Security. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

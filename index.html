@@ -187,7 +187,6 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
             border: 1px solid #e0e0e0;
         }
         
@@ -246,6 +245,7 @@
             border: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             width: 100%;
+            margin-bottom: 10px;
         }
         
         .view-profile-btn:hover {
@@ -253,6 +253,130 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
             color: white;
+        }
+        
+        .share-btn {
+            background: #ffffff;
+            color: #212529;
+            padding: 10px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 2px solid #212529;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        
+        .share-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-1px);
+            color: #212529;
+        }
+        
+        .share-btn i {
+            font-size: 18px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .deactivate-btn {
+            background: #ffffff;
+            color: #ff9800;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            border: 2px solid #ff9800;
+            cursor: pointer;
+        }
+        
+        .deactivate-btn:hover {
+            background: #fff3e0;
+            transform: translateY(-1px);
+            color: #ff9800;
+        }
+        
+        .deactivate-btn i {
+            font-size: 16px;
+        }
+        
+        .delete-btn {
+            background: #ffffff;
+            color: #f44336;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            border: 2px solid #f44336;
+            cursor: pointer;
+        }
+        
+        .delete-btn:hover {
+            background: #ffebee;
+            transform: translateY(-1px);
+            color: #f44336;
+        }
+        
+        .delete-btn i {
+            font-size: 16px;
+        }
+        
+        .add-profile-btn {
+            background: #212529;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 24px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        
+        .add-profile-btn:hover {
+            background: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .add-profile-btn i {
+            font-size: 22px;
+        }
+        
+        .add-profile-section {
+            text-align: center;
+            margin-bottom: 30px;
         }
         
         .empty-state {
@@ -390,10 +514,17 @@
             <h1>Staff QR Code Portal</h1>
             <p>Ageint Security</p>
         </div>
+        
+        <div class="add-profile-section">
+            <button class="add-profile-btn" onclick="addNewProfile()">
+                <i class="material-icons">person_add</i>
+                Add Profile
+            </button>
+        </div>
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Total Technicians</div>
+                <div class="stat-label">Total Staff</div>
                 <div id="statTotal" class="stat-value">--</div>
                 <div class="stat-sub">Active profiles</div>
             </div>
@@ -412,29 +543,30 @@
         
         <div class="staff-grid">
             
-            <div class="staff-card" onclick="window.open('staff/levi-mccarty.html', '_blank')">
+            <div class="staff-card">
                 <div class="staff-card-inner">
                     <div class="staff-icon">
                         <i class="material-icons">person</i>
                     </div>
                     <h2 class="staff-name">Levi McCarty</h2>
                     <p class="staff-role">Technician</p>
-                    <a href="staff/levi-mccarty.html" class="view-profile-btn" onclick="event.stopPropagation();" target="_blank">
+                    <a href="staff/levi-mccarty.html" class="view-profile-btn" target="_blank">
                         View Profile
                     </a>
-                </div>
-            </div>
-            
-            <div class="staff-card" onclick="window.open('staff/will-rollins.html', '_blank')">
-                <div class="staff-card-inner">
-                    <div class="staff-icon">
-                        <i class="material-icons">person</i>
+                    <button class="share-btn" onclick="shareProfile('Levi McCarty', 'staff/levi-mccarty.html')">
+                        <i class="material-icons">share</i>
+                        Share
+                    </button>
+                    <div class="action-buttons">
+                        <button class="deactivate-btn" onclick="deactivateProfile('Levi McCarty')">
+                            <i class="material-icons">pause_circle</i>
+                            Deactivate
+                        </button>
+                        <button class="delete-btn" onclick="deleteProfile('Levi McCarty')">
+                            <i class="material-icons">delete</i>
+                            Delete
+                        </button>
                     </div>
-                    <h2 class="staff-name">Will Rollins</h2>
-                    <p class="staff-role">Salesman</p>
-                    <a href="staff/will-rollins.html" class="view-profile-btn" onclick="event.stopPropagation();" target="_blank">
-                        View Profile
-                    </a>
                 </div>
             </div>
             
@@ -459,6 +591,90 @@
                 updatedEl.textContent = updated.toLocaleDateString();
             }
         });
+        
+        // Share profile functionality
+        async function shareProfile(name, relativeUrl) {
+            const baseUrl = window.location.origin + window.location.pathname.replace('index.html', '');
+            const fullUrl = baseUrl + relativeUrl;
+            
+            // Check if Web Share API is available (mobile)
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: `${name} - Ageint Security`,
+                        text: `View ${name}'s profile and leave a review`,
+                        url: fullUrl
+                    });
+                } catch (err) {
+                    // User cancelled or error occurred
+                    if (err.name !== 'AbortError') {
+                        copyToClipboard(fullUrl, name);
+                    }
+                }
+            } else {
+                // Desktop - copy to clipboard
+                copyToClipboard(fullUrl, name);
+            }
+        }
+        
+        // Copy to clipboard function
+        function copyToClipboard(text, name) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show success message
+                M.toast({html: `Link copied to clipboard!`, displayLength: 2000});
+            }).catch(err => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    M.toast({html: `Link copied to clipboard!`, displayLength: 2000});
+                } catch (err) {
+                    M.toast({html: `Failed to copy link`, displayLength: 2000});
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+        
+        // Add new profile functionality
+        function addNewProfile() {
+            const name = prompt('Enter the name for the new profile:');
+            
+            if (name && name.trim()) {
+                const trimmedName = name.trim();
+                const subject = `AGEINT - ADD QR PROFILE`;
+                const body = `Add: ${trimmedName}`;
+                const mailtoLink = `mailto:lmccarty@ageintsecurity.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoLink;
+            }
+        }
+        
+        // Deactivate profile functionality
+        function deactivateProfile(name) {
+            if (confirm(`Are you sure you want to deactivate ${name}'s profile?`)) {
+                const subject = `AGEINT - DEACTIVATE QR PROFILE`;
+                const body = `Deactivate: ${name}`;
+                const mailtoLink = `mailto:lmccarty@ageintsecurity.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoLink;
+            }
+        }
+        
+        // Delete profile functionality
+        function deleteProfile(name) {
+            if (confirm(`Are you sure you want to DELETE ${name}'s profile? This action cannot be undone.`)) {
+                const subject = `AGEINT - DELETE QR PROFILE`;
+                const body = `Delete: ${name}`;
+                const mailtoLink = `mailto:lmccarty@ageintsecurity.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoLink;
+            }
+        }
     </script>
     
     <!-- Security & Authentication Script -->
